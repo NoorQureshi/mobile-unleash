@@ -1,0 +1,3 @@
+# .gitignore
+venv/
+backend/db.sqlite3
