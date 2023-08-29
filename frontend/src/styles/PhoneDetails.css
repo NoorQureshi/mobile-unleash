@@ -1,0 +1,79 @@
+/* PhoneDetails.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+.header-container {
+  background-color: #eeeeee;  /* Light Grey Background */
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabs-container {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  border-bottom: 3px solid #007bff;
+}
+
+.spec-section {
+  padding: 20px;
+}
+
+.spec-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.spec-content span {
+  display: block;
+  margin-bottom: 8px;
+}
+.phone-details-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.phone-image-details-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.phone-title {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.phone-image {
+  margin-top: 1rem;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+}
+
+.compare-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,24 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.bg-custom-gray {
+    background-color: rgb(236 253 245);
+ }
+
+ .container {
+    scrollbar-gutter: stable;
+  }
+  
+  html {
+    overflow-y: scroll;
+  }
+
+.dimmed {
+    opacity: 0.5;
+}
+
+.checkmark {
+    color: green;
+    margin-left: 10px;
+}
