@@ -5,7 +5,7 @@ function LatestPhones({ phones }) {
         <div>
             <h2 className="p-4 text-xl font-semibold mb-4">Latest Phones</h2>
             <div className="flex flex-wrap gap-4 font-sans">
-                {phones && phones.map((phone) => (
+                {phones && phones.map((phone, index) => (
                     <div key={phone.name} className="w-full p-3" style={{ width: '150px' }}>
                         <div className="bg-white transition-shadow duration-300 hover:shadow-md overflow-hidden relative">
                             <a href={`/phones/${phone.slug}/`} className="block">

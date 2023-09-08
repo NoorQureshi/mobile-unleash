@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (
-    Phone, Display, Camera, Performance, Storage,
-    Battery, AdditionalFeatures
+    Phone, Display, Hardware, Battery, Camera, 
+    Design, Cellular, Multimedia, ConnectivityAndFeatures
 )
 
 class DisplaySerializer(serializers.ModelSerializer):
@@ -9,19 +9,9 @@ class DisplaySerializer(serializers.ModelSerializer):
         model = Display
         fields = '__all__'
 
-class CameraSerializer(serializers.ModelSerializer):
+class HardwareSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Camera
-        fields = '__all__'
-
-class PerformanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Performance
-        fields = '__all__'
-
-class StorageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Storage
+        model = Hardware
         fields = '__all__'
 
 class BatterySerializer(serializers.ModelSerializer):
@@ -29,61 +19,81 @@ class BatterySerializer(serializers.ModelSerializer):
         model = Battery
         fields = '__all__'
 
-class AdditionalFeaturesSerializer(serializers.ModelSerializer):
+class CameraSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AdditionalFeatures
+        model = Camera
+        fields = '__all__'
+
+class DesignSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Design
+        fields = '__all__'
+
+class CellularSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cellular
+        fields = '__all__'
+
+class MultimediaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Multimedia
+        fields = '__all__'
+
+class ConnectivityAndFeaturesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ConnectivityAndFeatures
         fields = '__all__'
 
 class PhoneSerializer(serializers.ModelSerializer):
     display = DisplaySerializer()
-    camera = CameraSerializer()
-    performance = PerformanceSerializer()
-    storage = StorageSerializer()
+    hardware = HardwareSerializer()
     battery = BatterySerializer()
-    additional_features = AdditionalFeaturesSerializer()
+    camera = CameraSerializer()
+    design = DesignSerializer()
+    cellular = CellularSerializer()
+    multimedia = MultimediaSerializer()
+    connectivity_and_features = ConnectivityAndFeaturesSerializer()
 
     class Meta:
         model = Phone
         fields = '__all__'
 
     def create(self, validated_data):
+        # Nested serializers data
         display_data = validated_data.pop('display')
-        camera_data = validated_data.pop('camera')
-        performance_data = validated_data.pop('performance')
-        storage_data = validated_data.pop('storage')
+        hardware_data = validated_data.pop('hardware')
         battery_data = validated_data.pop('battery')
-        additional_features_data = validated_data.pop('additional_features')
+        camera_data = validated_data.pop('camera')
+        design_data = validated_data.pop('design')
+        cellular_data = validated_data.pop('cellular')
+        multimedia_data = validated_data.pop('multimedia')
+        connectivity_and_features_data = validated_data.pop('connectivity_and_features')
 
+        # Create Phone instance
         phone = Phone.objects.create(**validated_data)
 
-        display_data.pop('phone', None)
+        # Create related instances
         Display.objects.create(phone=phone, **display_data)
-
-        camera_data.pop('phone', None)
-        Camera.objects.create(phone=phone, **camera_data)
-
-        performance_data.pop('phone', None)
-        Performance.objects.create(phone=phone, **performance_data)
-
-        storage_data.pop('phone', None)
-        Storage.objects.create(phone=phone, **storage_data)
-
-        battery_data.pop('phone', None)
+        Hardware.objects.create(phone=phone, **hardware_data)
         Battery.objects.create(phone=phone, **battery_data)
+        Camera.objects.create(phone=phone, **camera_data)
+        Design.objects.create(phone=phone, **design_data)
+        Cellular.objects.create(phone=phone, **cellular_data)
+        Multimedia.objects.create(phone=phone, **multimedia_data)
+        ConnectivityAndFeatures.objects.create(phone=phone, **connectivity_and_features_data)
 
-        additional_features_data.pop('phone', None)
-        AdditionalFeatures.objects.create(phone=phone, **additional_features_data)
-            
         return phone
-    
 
     def update(self, instance, validated_data):
+        # Nested serializers data
         display_data = validated_data.pop('display')
-        camera_data = validated_data.pop('camera')
-        performance_data = validated_data.pop('performance')
-        storage_data = validated_data.pop('storage')
+        hardware_data = validated_data.pop('hardware')
         battery_data = validated_data.pop('battery')
-        additional_features_data = validated_data.pop('additional_features')
+        camera_data = validated_data.pop('camera')
+        design_data = validated_data.pop('design')
+        cellular_data = validated_data.pop('cellular')
+        multimedia_data = validated_data.pop('multimedia')
+        connectivity_and_features_data = validated_data.pop('connectivity_and_features')
 
         # Update Phone details
         for attr, value in validated_data.items():
@@ -92,10 +102,17 @@ class PhoneSerializer(serializers.ModelSerializer):
 
         # Update related models
         Display.objects.update_or_create(phone=instance, defaults=display_data)
-        Camera.objects.update_or_create(phone=instance, defaults=camera_data)
-        Performance.objects.update_or_create(phone=instance, defaults=performance_data)
-        Storage.objects.update_or_create(phone=instance, defaults=storage_data)
+        Hardware.objects.update_or_create(phone=instance, defaults=hardware_data)
         Battery.objects.update_or_create(phone=instance, defaults=battery_data)
-        AdditionalFeatures.objects.update_or_create(phone=instance, defaults=additional_features_data)
+        Camera.objects.update_or_create(phone=instance, defaults=camera_data)
+        Design.objects.update_or_create(phone=instance, defaults=design_data)
+        Cellular.objects.update_or_create(phone=instance, defaults=cellular_data)
+        Multimedia.objects.update_or_create(phone=instance, defaults=multimedia_data)
+        ConnectivityAndFeatures.objects.update_or_create(phone=instance, defaults=connectivity_and_features_data)
 
         return instance
+    
+    
+
+class ScrapedDataSerializer(serializers.Serializer):
+    url = serializers.CharField(max_length=2000)

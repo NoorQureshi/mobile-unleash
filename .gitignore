@@ -3,6 +3,7 @@ venv/
 backend/db.sqlite3
 
 # Frontend
+frontend/src/pages/dashboard
 
 # dependencies
 /node_modules
