@@ -9,17 +9,14 @@ function LatestPhones({ phones }) {
                     <div key={phone.name} className="w-full p-3" style={{ width: '150px' }}>
                         <div className="bg-white transition-shadow duration-300 hover:shadow-md overflow-hidden relative">
                             <a href={`/phones/${phone.slug}/`} className="block">
-                                <div className="relative">
+                                {/* <div className="relative">
                                     <img className="w-full h-40 object-contain" src={phone.image} alt={phone.name} />
-                                </div>
+                                </div> */}
                             </a>
                             <div className="p-4 text-center">
                                 <h5 className="mb-1 text-md font-semibold leading-tight text-gray-800">
                                     <a href={`/phones/${phone.slug}/`} className="hover:underline">{phone.name}</a>
                                 </h5>
-                                <div className="mt-2">
-                                    <i className="fa fa-exchange cursor-pointer" style={{ opacity: 0.5 }}></i>
-                                </div>
                             </div>
                         </div>
                     </div>

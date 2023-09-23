@@ -6,10 +6,10 @@ const HighlightedSpecs = ({ phone }) => {
         <div className="flex-1 flex flex-col items-center space-y-4">
             {[
                 { icon: FaBatteryFull, title: 'Battery', data: phone.battery.capacity },
-                { icon: FaMicrochip, title: 'CPU', data: phone.performance.cpu },
+                // { icon: FaMicrochip, title: 'CPU', data: phone.performance.cpu },
                 { icon: FaCalendarAlt, title: 'Release Date', data: phone.release_date },
                 { icon: FaDesktop, title: 'Display', data: phone.display.size },
-                { icon: FaDatabase, title: 'Storage', data: phone.storage.capacity },
+                // { icon: FaDatabase, title: 'Storage', data: phone.storage.capacity },
                 { icon: FaWindows, title: 'OS', data: phone.os },
             ].map((spec, index) => (
                 <div key={index} className="bg-[#fbfbfb] p-4 rounded-lg hover:shadow-lg transition-shadow duration-300 ease-in-out" style={{ width: '188px' }}>

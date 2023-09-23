@@ -26,10 +26,13 @@ const CompareSpecsCon = ({ phones, similarSpecs, highlightSimilar, removePhone }
                     )}
                     {[
                         { title: 'Display', specs: phone.display },
-                        { title: 'Camera', specs: phone.camera },
-                        { title: 'Performance', specs: phone.performance },
+                        { title: 'Hardware', specs: phone.hardware },
                         { title: 'Battery', specs: phone.battery },
-                        { title: 'Additional Features', specs: phone.additional_features },
+                        { title: 'Camera', specs: phone.camera },
+                        { title: 'Design', specs: phone.design },
+                        { title: 'Cellular', specs: phone.cellular },
+                        { title: 'Multimedia', specs: phone.multimedia },
+                        { title: 'Connectivity & Features', specs: phone.connectivity_and_features },
                     ].map((section, index) => (
                         <div key={index} className="spec-section bg-white p-4 rounded-lg w-full">
                             <h2 className="spec-title text-lg font-semibold mb-2 text-white bg-violet-500 p-2 rounded">

@@ -53,6 +53,7 @@ class PhoneSerializer(serializers.ModelSerializer):
     cellular = CellularSerializer()
     multimedia = MultimediaSerializer()
     connectivity_and_features = ConnectivityAndFeaturesSerializer()
+    image = serializers.ImageField(required=True)
 
     class Meta:
         model = Phone

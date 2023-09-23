@@ -12,21 +12,40 @@ import requests
 
 class ScrapeAndReturnJSON(generics.CreateAPIView):
     serializer_class = ScrapedDataSerializer
-    http_method_names = ['post']  # Explicitly allow only POST requests
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             url = serializer.validated_data.get('url')
-            scraped_data = scrape_phone_data(url)
+            scraped_data = scrape_phone_data(url)  # Assuming this function returns the scraped data
             
             if scraped_data is not None:
-                return Response({'scraped_data': scraped_data}, status=status.HTTP_200_OK)
+                # Prepare the data for saving
+                phone_data = {
+                    'name': 'Samsung Galaxy A54 5G',  # Replace with actual name
+                    'brand': 1,  # Replace with actual brand ID
+                    'display': {k.strip(' :'): v for k, v in scraped_data['Display'].items()},
+                    'hardware': {k.strip(' :'): v for k, v in scraped_data['Hardware'].items()},
+                    'battery': {k.strip(' :'): v for k, v in scraped_data['Battery'].items()},
+                    'camera': {k.strip(' :'): v for k, v in scraped_data['Camera'].items()},
+                    'design': {k.strip(' :'): v for k, v in scraped_data['Design'].items()},
+                    'cellular': {k.strip(' :'): v for k, v in scraped_data['Cellular'].items()},
+                    'multimedia': {k.strip(' :'): v for k, v in scraped_data['Multimedia'].items()},
+                    'connectivity_and_features': {k.strip(' :'): v for k, v in scraped_data['Connectivity & Features'].items()},
+                }
+
+                # Use your existing PhoneSerializer to save the data
+                phone_serializer = PhoneSerializer(data=phone_data)
+                if phone_serializer.is_valid():
+                    phone_serializer.save()
+                    return Response({'message': 'Data scraped and saved successfully'}, status=status.HTTP_201_CREATED)
+                else:
+                    return Response(phone_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
             else:
                 return Response({'error': 'Failed to scrape data'}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class PhoneListCreateView(generics.ListCreateAPIView):
     queryset = Phone.objects.all()

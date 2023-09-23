@@ -8,6 +8,7 @@ class Phone(models.Model):
     brand = models.ForeignKey(Brand, related_name="phones", on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=210, unique=True, blank=True)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
         return self.name
