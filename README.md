@@ -1,4 +1,4 @@
-# Mobile Unleash - Phone Compare and Review App
+# Mobile Unleash
 
 ![image](https://github.com/NoorQureshi/mobile-unleash/assets/10489263/b7e9a5b9-2ea1-45cc-a447-a2f6b8c154a1)
 
@@ -12,7 +12,7 @@ Mobile Unleash is a web app that allows users to compare and review phones. It i
 
 * Compare the specifications of two phones side-by-side
 
-**Getting Started**
+## Getting Started
 
 To get started using Mobile Unleash, simply visit the website and start browsing! You can use the search bar at the top of the page to find a specific phone, or you can browse by brand or the latest phones.
 
@@ -26,13 +26,10 @@ To compare the specifications of two phones side-by-side, simply click on the "C
 
 **Requirements**
 
-* Python 3.6+
-
-* Django 3.2+
-
-* Next.js 12+
-
-* TailwindCSS 3+
+* Python
+* Django
+* Next.js 
+* TailwindCSS
 
 ## Installation
 
