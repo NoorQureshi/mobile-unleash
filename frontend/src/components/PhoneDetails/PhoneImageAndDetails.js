@@ -38,9 +38,9 @@ const PhoneImageAndDetails = ({ phone }) => {
         <div className="flex-1 flex flex-col items-center justify-center">
             <h1 className="text-2xl font-bold mb-2" style={{ fontFamily: 'Poppins, sans-serif', color: '#333' }}>{phone.name}</h1>
             <span className="text-sm text-gray-500 mb-4" style={{ fontSize: '12px' }}>Add your review</span>
-            <button onClick={() => setShowPopup(true)} className="mb-4 transform transition-transform duration-300 hover:scale-105">
+            {/* <button onClick={() => setShowPopup(true)} className="mb-4 transform transition-transform duration-300 hover:scale-105">
                 <img src={phone.image} alt={phone.name} className="object-cover cursor-pointer mx-auto w-1/2" />
-            </button>
+            </button> */}
             <motion.button
                 onClick={handleCompareClick}
                 className="bg-blue-500 text-white px-6 py-2 rounded-full font-bold uppercase"

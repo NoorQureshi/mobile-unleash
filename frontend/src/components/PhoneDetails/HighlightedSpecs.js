@@ -1,16 +1,16 @@
 import React from 'react';
-import { FaBatteryFull, FaMicrochip, FaCalendarAlt, FaDesktop, FaDatabase, FaWindows } from 'react-icons/fa';
+import { FaBatteryEmpty, FaMicrochip, FaCalendarAlt, FaDesktop, FaDatabase, FaMobile } from 'react-icons/fa';
 
 const HighlightedSpecs = ({ phone }) => {
     return (
         <div className="flex-1 flex flex-col items-center space-y-4">
             {[
-                { icon: FaBatteryFull, title: 'Battery', data: phone.battery.capacity },
+                { icon: FaBatteryEmpty, title: 'Battery', data: phone.battery.capacity },
                 // { icon: FaMicrochip, title: 'CPU', data: phone.performance.cpu },
-                { icon: FaCalendarAlt, title: 'Release Date', data: phone.release_date },
-                { icon: FaDesktop, title: 'Display', data: phone.display.size },
+                // { icon: FaCalendarAlt, title: 'Release Date', data: phone.release_date },
+                { icon: FaDesktop, title: 'Display', data: phone.display.size + ' - ' + phone.display.refresh_rate},
                 // { icon: FaDatabase, title: 'Storage', data: phone.storage.capacity },
-                { icon: FaWindows, title: 'OS', data: phone.os },
+                { icon: FaMobile, title: 'OS', data: phone.hardware.os },
             ].map((spec, index) => (
                 <div key={index} className="bg-[#fbfbfb] p-4 rounded-lg hover:shadow-lg transition-shadow duration-300 ease-in-out" style={{ width: '188px' }}>
                     <div className="flex items-center">

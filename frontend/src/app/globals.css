@@ -22,3 +22,15 @@
     color: green;
     margin-left: 10px;
 }
+
+/* Specs Table */
+
+/* Left <td> */
+.left-td {
+  width: 160px;
+}
+
+/* Right <td> */
+.right-td {
+  width: calc(100% - 150px);
+}

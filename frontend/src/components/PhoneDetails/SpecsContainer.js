@@ -10,7 +10,7 @@ const SpecificationsContainer = ({ phone, activeTab, setActiveTab }) => {
             <h2 className="text-2xl font-bold mb-2 text-gray-900" style={{ fontFamily: 'Poppins, sans-serif' }}>Specifications: <span className="text-lg text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>{phone.name}</span></h2>
 
             {/* Tab Content */}
-            <div className="mt-8 grid grid-cols-2 gap-8">
+            <div className="mt-8 grid grid-cols-1 gap-8">
                 {[
                     { title: 'Display', specs: phone.display },
                     { title: 'Hardware', specs: phone.hardware },
@@ -26,11 +26,11 @@ const SpecificationsContainer = ({ phone, activeTab, setActiveTab }) => {
                         <table className="min-w-full">
                             <tbody>
                             {Object.keys(section.specs).filter(key => !excludedKeys.includes(key)).map((key, i) => (
-                                    <tr key={i} className={`${i % 2 === 0 ? 'bg-gray-100' : 'bg-gray-200'} hover:bg-gray-300`}>
-                                        <td className="px-4 py-2 border-b text-gray-800" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 'bold', fontSize: '14px' }}>{key.replace(/_/g, ' ').charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}</td>
-                                        <td className="px-4 py-2 border-b text-gray-700" style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>{section.specs[key]}</td>
-                                    </tr>
-                                ))}
+                            <tr key={i} className={`${i % 2 === 0 ? 'bg-gray-100' : 'bg-gray-200'} hover:bg-gray-300`}>
+                                <td className="left-td px-4 py-2 border-b text-gray-800" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 'bold', fontSize: '14px' }}>{key.replace(/_/g, ' ').charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}</td>
+                                <td className="right-td px-4 py-2 border-b text-gray-700" style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>{section.specs[key]}</td>
+                            </tr>
+                            ))}
                             </tbody>
                         </table>
                     </div>

@@ -9,9 +9,9 @@ function PhonesByBrand({ phones, brand }) {
                     <div key={phone.name} className="w-full p-3" style={{ width: '150px' }}>
                         <div className="bg-white transition-shadow duration-300 hover:shadow-xl overflow-hidden">
                             <a href={`/phones/${phone.slug}/`}>
-                                <div className="relative">
+                                {/* <div className="relative">
                                     <img className="w-full h-40 object-contain" src={phone.image} alt={phone.name} />
-                                </div>
+                                </div> */}
                             </a>
                             <div className="p-4 text-center">
                                 <h5 className="mb-1 text-md font-semibold leading-tight text-gray-800">
